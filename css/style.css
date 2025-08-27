@@ -1,0 +1,346 @@
+/* Globale Stile und Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #fff;
+}
+
+/* --- Layout und Sektionen --- */
+
+main {
+    flex: 1;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #0f1a27;
+    padding: 15px 40px;
+    color: #fff; /* Stellt sicher, dass der Navigationsinhalt weiß ist */
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Neue Stile für die Navigationslinks */
+.nav-links {
+    list-style: none; /* Entfernt die Standard-Aufzählungszeichen */
+    display: flex;
+    align-items: center;
+    gap: 0; /* Setzt den Abstand auf 0, um die Trennlinien zu kontrollieren */
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+    padding: 0 10px; /* Fügt Abstand um die Links hinzu */
+}
+
+/* Fügt den Trenner nach jedem Listenelement außer dem letzten hinzu */
+.nav-links li:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: -2px; /* Positioniert den Trenner zwischen den Listenelementen */
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-links a {
+    color: #fff; /* Links in der Navigation sind weiß */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #c7a47a; /* Farbänderung beim Hovern */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background-color: #0f1a27;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-image-wrapper {
+    background-color: #c7a47a;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.hero-image-wrapper img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.hero-text h4 {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* About Section */
+.about {
+    position: relative;
+    background-color: #f9f9f9;
+    color: #222;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-container:hover {
+    transform: translateY(-5px);
+}
+
+.about-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.about-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Projects Section */
+.projects {
+    background-color: #fff;
+    color: #000;
+    padding: 40px 20px;
+}
+
+.projects h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* NEU: Macht die gesamte Projektkarte klickbar */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    padding-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card h3 {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.project-card p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.project-btn {
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #0f1a27;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-content a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --- UI-Elemente und Komponenten --- */
+
+.btn {
+    background-color: #c7a47a;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #a38361;
+}
+
+.btn-dark {
+    background-color: #0f1a27;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn-dark:hover {
+    background-color: #192a3d;
+    transform: translateY(-3px);
+}
+
+/* --- Dekorative Elemente --- */
+
+/* Geometrische Shapes */
+.shape {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #c7a47a;
+}
+
+.shape-left {
+    top: 20%;
+    left: 5%;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.shape-right {
+    top: 30%;
+    right: 10%;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.about-shape {
+    position: absolute;
+    background-color: #c7a47a;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.about-shape.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    top: 20px;
+    left: -40px;
+}
+
+.about-shape.square {
+    width: 100px;
+    height: 100px;
+    bottom: 30px;
+    right: -40px;
+}
+
+.about-shape.half-circle {
+    width: 100px;
+    height: 50px;
+    border-radius: 100px 100px 0 0;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- Responsive Stile --- */
+
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .shape-left, .shape-right {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-shape {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+}
