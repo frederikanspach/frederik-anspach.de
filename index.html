@@ -1,88 +1,124 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frederik Anspach - Frontend-Entwickler Portfolio</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio von Frederik Anspach, Frontend-Entwickler aus der Nähe von Braunschweig. Entwicklung moderner Weboberflächen mit HTML, CSS und JavaScript.">
-    <meta name="keywords" content="Frederik Anspach, Frontend Entwickler, Webentwicklung, HTML, CSS, JavaScript, Portfolio, Braunschweig, Projekte">
-    <meta name="author" content="Frederik Anspach">
-
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<header class="navbar">
-    <nav>
-        <div class="nav-logo">Frederik Anspach</div>
-              <ul class="nav-links">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Frederik Anspach - Portfolio - Frontend-Entwickler</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="heading">
+        <nav class="nav nav-left">
+          <ul class="nav-list">
+            <!-- <li><a href="/">Home</a></li> -->
+            <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#about">Über mich</a></li>
-            <li><a href="#projects">Projekte</a></li>
             <li><a href="#contact">Kontakt</a></li>
-        </ul>
-    </nav>
-</header>
+          </ul>
+        </nav>
+        <div class="header-title-text"><a href="/"></a>Frederik Anspach</div>
+        <nav class="nav nav-right">
+          <ul class="nav-list">
+            <li>
+              <a href="https://github.com/frederikanspach" target="_blank"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/frederik-anspach/"
+                target="_blank"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a class="btn-contact" href="mailto:kontakt@frederik-anspach.de"
+                >E-Mail</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-<main>
-    <section class="hero">
-        <div class="shape shape-left"></div>
-        <div class="shape shape-right"></div>
+      <div class="hero">
+        <h1 class="title hero-title">Frontend-Entwickler</h1>
+        <a class="btn btn-hero" href="#portfolio">Portfolio</a>
+      </div>
+    </header>
 
-        <div class="hero-content">
-            <div class="hero-image-wrapper">
-                <img src="img/frederik-01.jpg" alt="Portrait von Frederik Anspach, Frontend-Entwickler">
-            </div>
-            <div class="hero-text">
-                <h4>Portfolio</h4>
-                <h1>Frontend-Entwickler</h1>
-                <a href="#projects" class="btn">Meine Projekte ansehen</a>
-            </div>
+    <main>
+      <section id="portfolio" class="work">
+        <h2 class="title-h2">Meine Arbeiten ansehen</h2>
+        <div class="work-container">
+          <div class="work-img">
+            <a
+              href="https://frederikanspach.github.io/zahlenraten/"
+              target="_blank"
+            >
+              <img src="img/zahlenraten.png" alt="Spiel: Zahlenraten"
+            /></a>
+          </div>
+          <div class="work-img">
+            <a
+              href="https://frederikanspach.github.io/ju-jutsu-dojo/"
+              target="_blank"
+            >
+              <img src="img/ju-jutsu.png" alt="Webseite: Ju Jutsu"
+            /></a>
+          </div>
+          <div class="work-img">
+            <a
+              href="https://frederikanspach.github.io/fang-den-frosch/"
+              target="_blank"
+            >
+              <img src="img/fang-den-frosch.png" alt="Spiel: Fang den Frosch"
+            /></a>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="about" class="about">
+      <section id="about" class="about">
         <div class="about-container">
-            <h2>Über mich</h2>
-            <p>
-                Seit Juni 2025 entwickle ich moderne und benutzerfreundliche Weboberflächen mit HTML, CSS und JavaScript.
-                Meine frühere Tätigkeit als Linux-Systemadministrator und Programmierer (2000–2008, Perl & Shell) hat mir ein tiefes technisches Verständnis vermittelt,
-                das ich nun gezielt in der Frontend-Entwicklung einsetze. Mein Ziel ist es, optisch ansprechende, performante und saubere Lösungen zu entwickeln,
-                die den Nutzer in den Mittelpunkt stellen. - <strong>Frederik Anspach</strong>
+          <div class="about-left">
+            <h2 class="title-h2">Hi, ich bin<br />Frederik</h2>
+            <p class="about-p">
+              Seit Juni 2025 entwickle ich moderne und benutzerfreundliche
+              Weboberflächen mit HTML, CSS und JavaScript. Meine frühere
+              Tätigkeit als Linux-Systemadministrator und Programmierer
+              (2000–2008, Perl & Shell) hat mir ein tiefes technisches
+              Verständnis vermittelt, das ich nun gezielt in der
+              Frontend-Entwicklung einsetze. Mein Ziel ist es, optisch
+              ansprechende, performante und saubere Lösungen zu entwickeln, die
+              den Nutzer in den Mittelpunkt stellen.<br />
+              - <strong> Frederik Anspach</strong>
             </p>
+          </div>
+          <div class="about-right">
+            <img
+              class="about-img"
+              src="img/frederik-03.png"
+              alt="Frederik Anspach - Vortrag"
+            />
+          </div>
         </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>Projekte</h2>
-        <div class="project-grid">
-            <a href="projects/zahlenraten/index.html" class="project-card-link">
-                <div class="project-card">
-                    <img src="img/zahlenraten.jpg" alt="Screenshot vom Projekt Zahlenraten, ein JavaScript-Spiel">
-                    <h3>Zahlenraten</h3>
-                    <p>Ein kleines JavaScript-Spiel, bei dem der Nutzer eine geheime Zahl erraten muss.</p>
-                    <span class="date">2025-08-13</span>
-                </div>
-            </a>
-            <a href="projects/fang-den-frosch/index.html" class="project-card-link">
-                <div class="project-card">
-                    <img src="img/fang-den-frosch.jpg" alt="Screenshot vom Projekt Fang den Frosch, ein Reaktionsspiel in JavaScript">
-                    <h3>Fang den Frosch</h3>
-                    <p>Ein Reaktionsspiel mit JavaScript, bei dem schnell klickende Reflexe gefragt sind.</p>
-                    <span class="date">2025-08-15</span>
-                </div>
-            </a>
-        </div>
-        <div class="project-btn">
-            <a href="mailto:kontakt@frederik-anspach.de" class="btn-dark">Kontakt aufnehmen</a>
-        </div>
-    </section>
-</main>
-
-<footer id="contact" class="footer">
-    <div class="footer-content">
-        <p>&copy; 2025 Frederik Anspach</p>
-    </div>
-</footer>
-</body>
+      </section>
+      <section id="contact" class="contact">
+        <p>
+          <a class="btn-contact" href="mailto:kontakt@frederik-anspach.de"
+            >E-Mail</a
+          >
+        </p>
+      </section>
+      <footer class="footer-container">
+        <!-- <nav class="nav footer">
+          <ul class="nav-list">
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="impressum.html#privacy">Datenschutzerklärung</a></li>
+          </ul>
+        </nav> -->
+        <p class="footer">&copy; 2025 Frederik Anspach</p>
+      </footer>
+    </main>
+  </body>
 </html>
