@@ -137,7 +137,7 @@ header {
 
 .btn-hero {
   margin-top: 2rem;
-  margin-bottom: 9rem;
+  margin-bottom: 2rem;
 }
 
 .btn:hover {
@@ -215,7 +215,6 @@ header {
   padding: 1rem;
   border: 1px solid var(--design-color);
   transition: 0.3s ease-in-out;
-  width: fit-content;
   margin-top: 2rem;
   margin-bottom: 9rem;
 }
@@ -232,13 +231,27 @@ header {
     align-items: center;
   }
 
+  .nav-list {
+    margin-top: 0.5rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .btn-hero {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
   .header-title-text {
     margin: 1rem;
   }
 
   .title-h2 {
     text-align: center;
-    margin: 5rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
   }
 
   .work {
@@ -256,6 +269,7 @@ header {
   }
 
   .about-p {
+    font-size: 1.4rem;
     margin: 2rem;
   }
 }
