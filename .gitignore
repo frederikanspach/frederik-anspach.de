@@ -1,2 +1,27 @@
-google7464bbbe35c0a3a9.html
-.gitignore
+# Allgemeine Betriebssystem-Dateien (Mac, Windows, Linux)
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.cache
+.project
+.idea/
+.vscode/
+
+# Build-Artefakte und generierte Dateien
+/dist/
+/build/
+/temp/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Abhängigkeiten und Pakete
+/node_modules/
+/vendor/
+/composer.lock
+/npm-debug.log*
+
+# Dateien mit sensiblen Daten
+.env
+config.local.php
