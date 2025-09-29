@@ -243,6 +243,21 @@ header {
   }
 }
 
+/* WORK ANIMATION (Für Portfolio-Bilder auf Mobile/Tablet) */
+@keyframes work-cycle {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  50%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* ======================================================= */
 /* 5. WORK & PORTFOLIO */
 /* ======================================================= */
@@ -282,6 +297,7 @@ header {
   height: 100%;
   object-fit: cover;
   opacity: 0;
+  /* Die Animation wird nur in der Media Query für Mobile/Tablet hinzugefügt! */
 }
 .work-img a:hover > img:first-child {
   opacity: 0.2;
@@ -387,7 +403,8 @@ header {
   letter-spacing: 0.05rem;
 }
 .pot-field {
-  display: none;
+  /* HONEYPOT FIX: Macht das Feld unsichtbar und nimmt keinen Platz ein */
+  display: none !important;
 }
 .form-group--checkbox {
   flex-direction: row;
@@ -470,7 +487,7 @@ header {
   transform: translateY(0);
 }
 .toast-success {
-  background: #1e8649;
+  background: #0f6131;
 }
 .toast-error {
   background: #e74c3c;
@@ -585,7 +602,7 @@ header {
     align-items: flex-start;
   }
   .hero-description {
-    display: none;
+    display: none !important;
   }
   .hero-content {
     display: flex;
@@ -601,11 +618,24 @@ header {
     font-size: 2rem;
   }
 
-  /* WORK */
+  /* WORK - Automatische Animation nur auf Mobile */
   .work-container {
     gap: 3rem;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  .work-img-hover {
+    animation: work-cycle 8s infinite ease-in-out;
+  }
+
+  /* Deaktiviert den Hover-Effekt (Mouseover) auf Mobile/Tablet, 
+     damit die Animation ungestört läuft. */
+  .work-img a:hover > img:first-child {
+    opacity: 1;
+  }
+  .work-img a:hover > .work-img-hover {
+    opacity: 0;
   }
 
   /* ABOUT */

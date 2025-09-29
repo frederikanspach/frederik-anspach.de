@@ -176,8 +176,7 @@ if (empty($_SESSION['csrf_token'])) {
           data-csrf-token="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>"
         >
           <div class="form-group pot-field">
-            <label for="pot">Bitte leer lassen</label>
-            <input type="text" id="pot" name="pot" />
+            <input type="text" id="pot" name="pot" autocomplete="off" />
           </div>
 
           <div class="form-group">
