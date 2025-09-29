@@ -387,10 +387,7 @@ header {
   letter-spacing: 0.05rem;
 }
 .pot-field {
-  /* display: none; */
-  opacity: 0;
-  position: absolute;
-  height: 0;
+  display: none;
 }
 .form-group--checkbox {
   flex-direction: row;
