@@ -3,52 +3,112 @@
 .about {
   display: flex;
   justify-content: center;
-  padding: 5rem 0;
-  background-color: lighten(
-    $color-accent,
-    25%
-  ); // Ein ganz dezenter Hintergrundton
+  padding: 8rem 0; // Etwas mehr Luft nach oben/unten
+  background-color: #f9f9f9; // Oder ein sehr helles Grau passend zu deiner Palette
 
   .about-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start; // Text und Bild oben bündig
     width: 90%;
     max-width: 1100px;
-    gap: 4rem;
+    gap: 5rem;
 
     @media (max-width: $bp-tablet) {
       flex-direction: column;
-      text-align: center;
-      gap: 2rem;
+      gap: 3rem;
     }
   }
 
   .about-left {
     flex: 1;
 
-    .about-p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      text-align: left;
+    .title-h2 {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      position: relative;
 
-      @media (max-width: $bp-tablet) {
-        text-align: center;
+      &::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background-color: $color-accent;
+        margin-top: 0.5rem;
       }
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      strong {
+        color: darken($color-accent, 10%);
+      }
+    }
+
+    .focus-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr; // Zweispaltig für bessere Platzausnutzung
+      gap: 1rem;
+
+      @media (max-width: $bp-mobile) {
+        grid-template-columns: 1fr;
+      }
+
+      li {
+        position: relative;
+        padding-left: 1.5rem;
+        font-weight: 500;
+
+        &::before {
+          content: ">"; // Das "Shell"-Versprechen
+          position: absolute;
+          left: 0;
+          color: $color-accent;
+          font-family: "Courier New", monospace;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .about-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-left: 3px solid $color-accent;
+      background: white;
+      font-size: 1rem;
     }
   }
 
   .about-right {
-    flex: 0 0 300px; // Bild behält seine Breite
+    flex: 0 0 350px;
+
+    @media (max-width: $bp-tablet) {
+      flex: 1;
+      width: 100%;
+      max-width: 400px;
+    }
 
     .about-img {
       width: 100%;
       height: auto;
-      border: 1px solid $color-accent;
-      box-shadow: 10px 10px 0px $color-accent; // Ein kleiner "Design-Kniff"
-      transition: transform $transition-base;
+      border: 1px solid #ddd;
+      filter: grayscale(20%); // Wirkt seriöser
+      box-shadow: 15px 15px 0px $color-accent;
+      transition: all $transition-base;
 
       &:hover {
         transform: translate(-5px, -5px);
+        box-shadow: 20px 20px 0px $color-accent;
+        filter: grayscale(0%);
       }
     }
   }

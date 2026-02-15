@@ -23,13 +23,13 @@
   cursor: pointer;
   transition: $transition-base;
   width: fit-content;
+  border-radius: 7px;
 
   &:hover {
     color: white;
   }
 
   &-contact {
-    // Erzeugt .btn-contact
     background-color: $color-accent;
 
     &:hover {
