@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf"); // Pfad für Vite angepasst
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-main;
+  background-color: $color-bg-light;
+  color: $color-text-main;
+  line-height: 1.6;
+  vertical-align: baseline;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: $transition-base;
+}
+
+ul {
+  list-style: none;
+}

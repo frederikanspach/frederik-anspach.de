@@ -1,22 +1,10 @@
-<?php
-session_start(); 
-
-// CSRF-Token erzeugen, falls noch nicht vorhanden
-if (empty($_SESSION['csrf_token'])) {
-    if (function_exists('random_bytes')) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    } else {
-        $_SESSION['csrf_token'] = bin2hex(openssl_random_pseudo_bytes(32));
-    }
-}
-?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Frederik Anspach - Portfolio - Frontend-Entwickler</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Frederik Anspach | Frontend-Entwickler Portfolio</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -63,82 +51,73 @@ if (empty($_SESSION['csrf_token'])) {
     <main>
       <section class="hero-split" id="heroSplit">
         <div class="hero-frame">
-          <a href="#portfolio" class="hero-area area-coder">
+          <div class="hero-area area-coder">
             <div class="hero-content">
               <h3 class="hero-title-sub">&lt; DEVELOPER &gt;</h3>
               <p class="hero-description">
-                Ich entwickle moderne Webanwendungen und sorge für ihre
-                Skalierbarkeit. Mein Fokus liegt auf sauberer Architektur,
-                Performance und Barrierefreiheit. Meine Werkzeuge der Wahl sind
-                React, TypeScript und Node.js.
+                Ich entwickle performante Webanwendungen mit einem Auge für
+                saubere Architektur. Mein Fundament als IT-Spezialist hilft mir
+                dabei, komplexe Logik in intuitive Nutzererlebnisse zu
+                verwandeln.
               </p>
             </div>
-          </a>
+          </div>
 
-          <a href="#about" class="hero-area area-designer">
+          <div class="hero-area area-designer">
             <div class="hero-content">
-              <h3 class="hero-title-sub">- DESIGNER -</h3>
+              <h3 class="hero-title-sub">_ SYSTEMS _</h3>
               <p class="hero-description">
-                Ich bin Produktentwickler mit Fokus auf intuitive Oberflächen
-                und ansprechende Erlebnisse für Start-ups, kleine Unternehmen
-                und Agenturen.
+                Dank meiner Wurzeln in der Systemadministration und im
+                Shell-Scripting denke ich über den Browserrand hinaus. Ich
+                verstehe die Infrastruktur, auf der moderner Code läuft.
               </p>
             </div>
-          </a>
+          </div>
         </div>
 
         <div class="hero">
-          <h1 class="title hero-title-main">Frontend-Entwickler</h1>
-          <a class="btn" href="#portfolio">Portfolio</a>
+          <h1 class="title hero-title-main">Frontend-Entwicklung</h1>
+          <a class="btn" href="#portfolio">Projekte entdecken</a>
         </div>
       </section>
 
       <section id="portfolio" class="work">
-        <h2 class="title-h2">Meine Arbeiten ansehen</h2>
+        <h2 class="title-h2">Portfolio</h2>
         <div class="work-container">
           <div class="work-img">
             <a
-              href="https://frederikanspach.github.io/zahlenraten/"
+              href="https://frederikanspach.github.io/witze-app/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
-              <img src="img/zahlenraten.png" alt="Spiel: Zahlenraten" /><img
-                src="img/zahlenraten-detail.png"
-                alt="Detailansicht Zahlenraten"
-                class="work-img-hover"
-            /></a>
-            <h3>Zahlenraten</h3>
-            <p>Techniken: <b>JS</b></p>
+              <img src="/img/witze-app.webp" alt="Witze-App Vorschau" />
+            </a>
+            <h3>Joke Generator</h3>
+            <p>Fokus: <b>API-Integration & Vite Workflows</b></p>
           </div>
+
           <div class="work-img">
             <a
-              href="https://frederikanspach.github.io/ju-jutsu-dojo/"
+              href="https://frederikanspach.github.io/notiz-app/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
-              <img src="img/ju-jutsu.png" alt="Webseite: Ju Jutsu" /><img
-                src="img/ju-jutsu-detail.png"
-                alt="Detailansicht Ju Jutsu-Homepage"
-                class="work-img-hover"
-            /></a>
-            <h3>Ju Jutsu-Homepage</h3>
-            <p>Techniken: <b>HTML | CSS</b></p>
+              <img src="/img/notiz-app.webp" alt="Notiz-App Vorschau" />
+            </a>
+            <h3>Persistent Notes</h3>
+            <p>Fokus: <b>LocalStorage & State-Management</b></p>
           </div>
+
           <div class="work-img">
             <a
-              href="https://frederikanspach.github.io/fang-den-frosch/"
+              href="https://frederikanspach.github.io/quiz-app/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener"
             >
-              <img
-                src="img/fang-den-frosch.png"
-                alt="Spiel: Fang den Frosch" /><img
-                src="img/fang-den-frosch-detail.png"
-                alt="Detailansicht Fang den Frosch"
-                class="work-img-hover"
-            /></a>
-            <h3>Fang den Frosch</h3>
-            <p>Techniken: <b>HTML | CSS | JS</b></p>
+              <img src="/img/quiz-app.webp" alt="Quiz-App Vorschau" />
+            </a>
+            <h3>Interactive Quiz</h3>
+            <p>Fokus: <b>Algorithmen & Asynchrone Daten</b></p>
           </div>
         </div>
       </section>
@@ -146,23 +125,29 @@ if (empty($_SESSION['csrf_token'])) {
       <section id="about" class="about">
         <div class="about-container">
           <div class="about-left">
-            <h2 class="title-h2">Hi, ich bin<br />Frederik</h2>
+            <h2 class="title-h2">Hi, ich bin Frederik</h2>
             <p class="about-p">
-              Mit einem frischen Start seit Juni 2025 gestalte ich hochwertige
-              Weboberflächen in HTML, CSS und JavaScript. Ich bringe System- und
-              Programmier-Erfahrung in Perl und Shell mit, die ich in meiner
-              früheren Karriere als Linux-Systemadministrator aufgebaut habe.
-              Mein Ziel ist es, dieses technische Fundament mit Kreativität zu
-              verbinden, um Lösungen zu liefern, die maximalen Nutzerfokus mit
-              optimaler Performance vereinen.<br />
-              <strong> Frederik Anspach</strong>
+              <strong>Vom Systemverständnis zur modernen Webanwendung.</strong
+              ><br /><br />
+              Meine Leidenschaft für Technologie begann als
+              Linux-Systemadministrator, wo ich komplexe Systeme in Perl und
+              Shell automatisierte. Nach einer langjährigen Phase in einem
+              Bereich mit höchster Verantwortung – dem Geld- und Werttransport –
+              kehre ich nun zu meinen technologischen Wurzeln zurück.
+              <br /><br />
+              Heute kombiniere ich diese fundierte IT-Praxis mit modernem
+              Frontend-Development. Mein Fokus liegt auf
+              <strong>JavaScript (ES6+)</strong>, dem Aufbau nachhaltiger
+              Programmlogik und sauberer Architektur. Ich verstehe nicht nur,
+              wie eine Oberfläche aussieht, sondern auch, wie die Prozesse
+              dahinter stabil und effizient laufen.
             </p>
           </div>
           <div class="about-right">
             <img
               class="about-img"
-              src="img/frederik-03.png"
-              alt="Frederik Anspach - Vortrag"
+              src="/img/frederik-03.png"
+              alt="Frederik Anspach"
             />
           </div>
         </div>
@@ -170,11 +155,7 @@ if (empty($_SESSION['csrf_token'])) {
 
       <section id="contact" class="contact">
         <h2 class="title-h2">Kontaktiere mich</h2>
-
-        <form
-          class="contact-form"
-          data-csrf-token="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>"
-        >
+        <form class="contact-form">
           <div class="form-group pot-field">
             <input type="text" id="pot" name="pot" autocomplete="off" />
           </div>
@@ -211,29 +192,27 @@ if (empty($_SESSION['csrf_token'])) {
             ></textarea>
           </div>
 
-          <div class="form-group form-group--checkbox">
+          <div class="form-group checkbox-group">
             <input type="checkbox" id="form-privacy" name="privacy" required />
             <label for="form-privacy">
-              Ich stimme der
-              <a href="datenschutz.html" target="_blank"
+              Ich akzeptiere die
+              <a href="/datenschutz.html" target="_blank"
                 >Datenschutzerklärung</a
-              >
-              zu.
+              >.
             </label>
           </div>
 
           <div class="button-group">
             <button type="submit" class="btn-contact">Nachricht senden</button>
-            <button type="reset">Inhalt löschen</button>
           </div>
         </form>
       </section>
-
-      <footer class="footer-container">
-        <p class="footer">&copy; 2025 Frederik Anspach</p>
-      </footer>
     </main>
 
-    <script src="js/form.js" defer></script>
+    <footer class="footer-container">
+      <p class="footer">&copy; 2026 Frederik Anspach</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

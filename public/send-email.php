@@ -29,12 +29,12 @@ if (empty($data)) {
 // ---------------------------------------------------------------------
 // 2. CSRF-Prüfung
 // ---------------------------------------------------------------------
-$submitted_token = $data['csrf_token'] ?? '';
-if (empty($submitted_token) || $submitted_token !== $session_token) {
-    http_response_code(403);
-    echo json_encode(['success' => false, 'message' => 'Ungültiger CSRF-Token.']);
-    exit;
-}
+// $submitted_token = $data['csrf_token'] ?? '';
+// if (empty($submitted_token) || $submitted_token !== $session_token) {
+//     http_response_code(403);
+//     echo json_encode(['success' => false, 'message' => 'Ungültiger CSRF-Token.']);
+//     exit;
+// }
 
 // ---------------------------------------------------------------------
 // 3. Rate-Limiting (max. 3 Anfragen pro Minute)

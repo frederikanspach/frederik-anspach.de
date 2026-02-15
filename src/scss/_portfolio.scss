@@ -1,0 +1,82 @@
+@import "variables";
+
+.work {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  .work-container {
+    display: grid;
+    // Automatische Spalten: Mindestens 300px, maximal gleichmäßig verteilt
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .work-img {
+    background: $color-bg-light;
+    border: 1px solid rgba($color-accent, 0.2);
+    padding: 1.5rem;
+    transition:
+      transform $transition-base,
+      box-shadow $transition-base;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-color: $color-accent;
+    }
+
+    a {
+      width: 100%;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform $transition-slow;
+
+      // Falls du wieder Hover-Bilder einbauen willst:
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: $color-text-main;
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: $color-text-main;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+
+      b {
+        color: $color-primary; // Falls du $color-primary in variables hast
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Media Query für sehr kleine Bildschirme
+@media (max-width: $bp-mobile) {
+  .work {
+    padding: 2rem 1rem;
+
+    .work-container {
+      grid-template-columns: 1fr; // Eine Spalte auf dem Handy
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import "variables";
+
+.hero-split {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  min-height: 600px;
+  position: relative;
+
+  .hero-frame {
+    position: relative;
+    width: 90vw;
+    max-width: 1200px;
+    height: 60vh;
+    max-height: 800px;
+    overflow: hidden;
+    margin-bottom: 10vh;
+
+    &:hover .area-designer {
+      @media (min-width: $bp-tablet + 1) {
+        opacity: 1;
+      }
+    }
+  }
+
+  .hero {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+
+    &-title-main {
+      font-weight: 400;
+      font-size: 3rem;
+      white-space: nowrap;
+      @media (max-width: $bp-tablet) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .hero-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition:
+      opacity $transition-slow,
+      justify-content $transition-slow;
+    z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    &.area-coder {
+      background-image: url("/img/bg-rechts.png");
+      justify-content: flex-start;
+    }
+
+    &.area-designer {
+      background-image: url("/img/bg-links.png");
+      justify-content: flex-end;
+      opacity: 0;
+      z-index: 3;
+
+      @media (max-width: $bp-tablet) {
+        animation: hero-split-cycle 8s infinite ease-in-out;
+      }
+    }
+  }
+
+  .hero-content {
+    z-index: 3;
+    max-width: 380px;
+    padding: 20px;
+
+    .hero-title-sub {
+      font-size: 3rem;
+      white-space: nowrap;
+      @media (max-width: $bp-tablet) {
+        font-size: 2rem;
+      }
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      @media (max-width: $bp-tablet) {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes hero-split-cycle {
+  0%,
+  45% {
+    opacity: 0;
+  }
+  50%,
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

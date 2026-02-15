@@ -1,0 +1,92 @@
+@import "variables";
+
+.contact {
+  padding: 5rem 1rem;
+  text-align: center;
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 3rem auto 0;
+    text-align: left;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        color: $color-text-muted;
+      }
+
+      input,
+      textarea {
+        padding: 1rem;
+        border: 1px solid rgba($color-text-main, 0.2);
+        background: transparent;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color $transition-base;
+
+        &:focus {
+          outline: none;
+          border-color: $color-accent;
+        }
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      // Honeypot Feld komplett verstecken
+      &.pot-field {
+        display: none !important;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .checkbox-group {
+      flex-direction: row !important; // Überschreibt das Spalten-Layout der anderen form-groups
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+      cursor: pointer;
+
+      input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-top: 0.2rem; // Kleiner Ausgleich für die Baseline des Textes
+        cursor: pointer;
+        accent-color: $color-accent; // Färbt die Checkbox in deiner Design-Farbe
+      }
+
+      label {
+        font-size: 0.9rem;
+        text-transform: none; // Datenschutz muss nicht schreien (kein uppercase)
+        letter-spacing: normal;
+        color: $color-text-main;
+        line-height: 1.4;
+        cursor: pointer;
+
+        a {
+          color: $color-primary;
+          text-decoration: underline;
+
+          &:hover {
+            color: $color-accent;
+          }
+        }
+      }
+    }
+  }
+}

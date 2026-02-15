@@ -1,0 +1,57 @@
+@import "variables";
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: $color-bg-light;
+  padding-bottom: 1rem;
+
+  #heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 1rem;
+    padding-top: 3rem;
+
+    @media (max-width: $bp-tablet) {
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+    }
+  }
+
+  .header-title-text {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 1rem;
+
+    @media (max-width: $bp-mobile) {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+  }
+
+  .nav {
+    display: flex;
+    align-items: flex-end;
+
+    &-list {
+      display: flex;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+
+      a:hover {
+        color: $color-accent;
+      }
+
+      @media (max-width: $bp-tablet) {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

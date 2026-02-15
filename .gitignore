@@ -1,27 +1,27 @@
-# Allgemeine Betriebssystem-Dateien (Mac, Windows, Linux)
-.DS_Store
-Thumbs.db
-ehthumbs.db
-.cache
-.project
-.idea/
-.vscode/
+_old_version
+deploy.sh
 
-# Build-Artefakte und generierte Dateien
-/dist/
-/build/
-/temp/
+# Logs
+logs
 *.log
-*.tmp
-*.bak
-*.swp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Abhängigkeiten und Pakete
-/node_modules/
-/vendor/
-/composer.lock
-/npm-debug.log*
+node_modules
+dist
+dist-ssr
+*.local
 
-# Dateien mit sensiblen Daten
-.env
-config.local.php
+# Editor directories and files
+.vscode
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

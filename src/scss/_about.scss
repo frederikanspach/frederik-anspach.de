@@ -1,0 +1,55 @@
+@import "variables";
+
+.about {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0;
+  background-color: lighten(
+    $color-accent,
+    25%
+  ); // Ein ganz dezenter Hintergrundton
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 1100px;
+    gap: 4rem;
+
+    @media (max-width: $bp-tablet) {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+
+  .about-left {
+    flex: 1;
+
+    .about-p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      text-align: left;
+
+      @media (max-width: $bp-tablet) {
+        text-align: center;
+      }
+    }
+  }
+
+  .about-right {
+    flex: 0 0 300px; // Bild behält seine Breite
+
+    .about-img {
+      width: 100%;
+      height: auto;
+      border: 1px solid $color-accent;
+      box-shadow: 10px 10px 0px $color-accent; // Ein kleiner "Design-Kniff"
+      transition: transform $transition-base;
+
+      &:hover {
+        transform: translate(-5px, -5px);
+      }
+    }
+  }
+}

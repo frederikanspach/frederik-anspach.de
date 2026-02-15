@@ -1,0 +1,13 @@
+@import "variables";
+
+.footer-container {
+  background-color: $color-bg-dark;
+  padding: 2rem 0;
+  text-align: center;
+
+  .footer {
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+  }
+}
