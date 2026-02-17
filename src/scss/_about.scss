@@ -3,12 +3,11 @@
 .about {
   display: flex;
   justify-content: center;
-  padding: 8rem 0; // Etwas mehr Luft nach oben/unten
-  background-color: #f9f9f9; // Oder ein sehr helles Grau passend zu deiner Palette
+  background-color: #f9f9f9;
 
   .about-container {
     display: flex;
-    align-items: flex-start; // Text und Bild oben bündig
+    align-items: flex-start;
     width: 90%;
     max-width: 1100px;
     gap: 5rem;
@@ -56,7 +55,7 @@
       padding: 0;
       margin: 2rem 0;
       display: grid;
-      grid-template-columns: 1fr 1fr; // Zweispaltig für bessere Platzausnutzung
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
 
       @media (max-width: $bp-mobile) {
@@ -69,7 +68,7 @@
         font-weight: 500;
 
         &::before {
-          content: ">"; // Das "Shell"-Versprechen
+          content: ">";
           position: absolute;
           left: 0;
           color: $color-accent;
@@ -101,7 +100,7 @@
       width: 100%;
       height: auto;
       border: 1px solid #ddd;
-      filter: grayscale(20%); // Wirkt seriöser
+      filter: grayscale(20%);
       box-shadow: 15px 15px 0px $color-accent;
       transition: all $transition-base;
 

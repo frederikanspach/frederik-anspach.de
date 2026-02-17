@@ -3,38 +3,42 @@
 .work {
   padding: 5rem 2rem;
   text-align: center;
+  background-color: $color-bg-light;
 
   .work-container {
     display: grid;
-    // Automatische Spalten: Mindestens 300px, maximal gleichmäßig verteilt
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    gap: 4rem;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto;
   }
 
   .work-img {
-    background: $color-bg-light;
-    border: 1px solid rgba($color-accent, 0.2);
-    padding: 1.5rem;
-    transition:
-      transform $transition-base,
-      box-shadow $transition-base;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
 
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border-color: $color-accent;
-    }
-
-    a {
+    .img-link {
       width: 100%;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       overflow: hidden;
-      border-radius: 4px;
+      border-radius: 8px;
+      display: block;
+      transition:
+        transform $transition-base,
+        box-shadow $transition-base;
+      border: 1px solid rgba($color-accent, 0.1);
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        border-color: $color-accent;
+
+        img {
+          transform: scale(1.03);
+        }
+      }
     }
 
     img {
@@ -42,41 +46,213 @@
       height: auto;
       display: block;
       transition: transform $transition-slow;
-
-      // Falls du wieder Hover-Bilder einbauen willst:
-      &:hover {
-        transform: scale(1.05);
-      }
     }
 
     h3 {
       font-size: 1.5rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       color: $color-text-main;
+      width: 100%;
     }
 
     p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
       font-size: 0.85rem;
-      color: $color-text-main;
+      margin-bottom: 1.5rem;
+      width: 100%;
+
+      li {
+        margin-bottom: 0.4rem;
+        b {
+          color: $color-accent;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto;
+
+    a {
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05rem;
+      text-decoration: none;
+      color: $color-text-main;
+      font-weight: 700;
+      transition: color $transition-base;
 
-      b {
-        color: $color-primary; // Falls du $color-primary in variables hast
-        font-weight: 600;
+      &:hover {
+        color: $color-accent;
       }
+    }
+  }
+
+  .slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 4rem auto 0 auto;
+    position: relative;
+    padding: 0 50px;
+  }
+
+  .slider-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+
+  .slider-card {
+    animation: fadeIn 0.2s ease-in-out;
+    min-width: 280px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba($color-accent, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.4;
+    transform: scale(0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card-image {
+      width: 100%;
+      height: 150px;
+      background: #eee;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .project-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &.active {
+      opacity: 1;
+      transform: scale(1.05);
+      border-color: $color-accent;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+
+    &.pre,
+    &.post {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+
+  .slider-btn {
+    background: transparent;
+    border: 2px solid $color-accent;
+    color: $color-accent;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all $transition-base;
+    position: absolute;
+    z-index: 10;
+
+    &:hover {
+      background: $color-accent;
+      color: white;
+    }
+
+    &.prev {
+      left: 0;
+    }
+    &.next {
+      right: 0;
     }
   }
 }
 
-// Media Query für sehr kleine Bildschirme
-@media (max-width: $bp-mobile) {
-  .work {
-    padding: 2rem 1rem;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-    .work-container {
-      grid-template-columns: 1fr; // Eine Spalte auf dem Handy
+@media (max-width: $bp-tablet) {
+  .work .work-container {
+    gap: 3rem;
+  }
+  .work .slider-card {
+    min-width: 240px;
+    &:not(.active) {
+      display: none;
     }
+  }
+}
+
+.skeleton {
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: shine 1.5s linear infinite;
+  border-radius: 4px;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.skeleton-card {
+  .skeleton-img {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .skeleton-text {
+    height: 1.2rem;
+    width: 80%;
+    margin: 0 auto 1rem auto;
+  }
+  .skeleton-btn {
+    height: 1rem;
+    width: 40%;
+    display: inline-block;
+    margin: 0 5px;
   }
 }

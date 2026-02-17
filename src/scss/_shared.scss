@@ -17,24 +17,45 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   padding: 1rem;
-  border: 1px solid $color-accent;
   background-color: $color-accent;
   color: $color-text-main;
   cursor: pointer;
   transition: $transition-base;
   width: fit-content;
   border-radius: 7px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 
   &:hover {
     color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px black;
   }
 
   &-contact {
+    font-family: Montserrat, sans-serif;
+    line-height: 1.6;
+    list-style: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 0;
+    padding: 0 5px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s ease-in-out;
     background-color: $color-accent;
 
     &:hover {
-      background-color: transparent;
       color: $color-accent;
+      background-color: transparent;
     }
   }
 }
