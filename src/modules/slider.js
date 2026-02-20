@@ -21,7 +21,9 @@ export async function initProjectSlider() {
         sliderContent.addEventListener("wheel", (evt) => {
             if (evt.deltaY !== 0) {
                 evt.preventDefault();
-                sliderContent.scrollLeft += evt.deltaY;
+
+                const scrollSpeed = 2.5;
+                sliderContent.scrollLeft += evt.deltaY * scrollSpeed;
             }
         }, { passive: false });
 
@@ -39,13 +41,13 @@ export async function initProjectSlider() {
         }
 
         if (prevBtn) {
-            prevBtn.onclick = () => {
+            prevBtn.addEventListener("click", () => {
                 if (sliderContent.scrollLeft <= 10) {
                     sliderContent.scrollTo({ left: sliderContent.scrollWidth, behavior: "smooth" });
                 } else {
                     sliderContent.scrollBy({ left: -scrollAmount, behavior: "smooth" });
                 }
-            };
+            });
         }
     } catch (error) {
         console.error("Slider-Error:", error);
@@ -68,8 +70,8 @@ function renderSlider(projects, container) {
             <h4>${repo.name}</h4>
             <p>${repo.description || "Ein spannendes GitHub Projekt."}</p>
             <div class="project-links">
-                <a href="${repo.html_url}" target="_blank">Code</a>
-                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank">Demo</a>` : ""}
+                <a href="${repo.html_url}" target="_blank" class="project-links__repo">Code</a>
+                ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="project-links__pages">Demo</a>` : ""}
             </div>
         `;
         container.appendChild(card);
