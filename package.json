@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "./deploy.sh",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "backup": "../scripts/backup-allinkl.sh",
+    "deploy": "../scripts/deploy.sh",
+    "deploy-all": "../scripts/deploy.sh -a"
   },
   "devDependencies": {
     "sass": "^1.97.3",
