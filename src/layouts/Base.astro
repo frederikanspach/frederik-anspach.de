@@ -1,0 +1,105 @@
+---
+import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  withStructuredData?: boolean;
+}
+
+const { title, description, path = "/", withStructuredData = false } = Astro.props;
+const canonical = new URL(path, Astro.site).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://frederik-anspach.de/#person",
+      name: "Frederik Anspach",
+      url: "https://frederik-anspach.de",
+      jobTitle: "Gründer & Entwickler",
+      sameAs: [
+        "https://github.com/frederikanspach",
+        "https://www.linkedin.com/in/frederik-anspach/",
+      ],
+      worksFor: {
+        "@type": "Organization",
+        name: "Frederik Anspach IT & Softwaresysteme",
+        url: "https://frederik-anspach.de",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://mytid.de/#app",
+      name: "MyTid",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web, Windows, macOS, Linux",
+      url: "https://mytid.de",
+      description:
+        "Rechtssichere, DSGVO-konforme Zeiterfassung für Unternehmen nach BAG-Urteil 2022. Lokal, ohne Cloud-Zwang, kostenlos startbar.",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "EUR",
+      },
+      author: {
+        "@id": "https://frederik-anspach.de/#person",
+      },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="de_DE" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {
+      withStructuredData && (
+        <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+      )
+    }
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="u-eyebrow sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+    >
+      Zum Inhalt springen
+    </a>
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>

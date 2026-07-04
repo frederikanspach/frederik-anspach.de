@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+// Rechtstext unverändert aus der Altseite übernommen (src/content/datenschutz.html)
+import legalHtml from "../content/datenschutz.html?raw";
+---
+
+<Base
+  title="Datenschutzerklärung | Frederik Anspach"
+  description="Datenschutzerklärung von frederik-anspach.de gemäß DSGVO."
+  path="/datenschutz.html"
+>
+  <section class="mx-auto max-w-6xl px-5 pt-36 pb-24 md:px-8 md:pt-44">
+    <div class="legal-prose" set:html={legalHtml} />
+  </section>
+</Base>

@@ -1,18 +1,23 @@
 {
   "name": "frederik-anspach.de",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "backup": "../scripts/backup-allinkl.sh",
     "deploy": "../scripts/deploy.sh",
     "deploy-all": "../scripts/deploy.sh -a"
   },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7"
+  },
   "devDependencies": {
-    "sass": "^1.97.3",
-    "vite": "^7.3.1"
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.6",
+    "tailwindcss": "^4.3.2"
   }
 }

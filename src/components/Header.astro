@@ -1,0 +1,82 @@
+---
+const navLinks = [
+  { label: "Produkte", href: "/#products" },
+  { label: "Über mich", href: "/#about" },
+];
+
+const externalLinks = [
+  { label: "GitHub", href: "https://github.com/frederikanspach" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/frederik-anspach/" },
+];
+---
+
+<header class="border-line bg-paper/92 fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+    <a
+      href="/"
+      class="u-display hover:text-accent text-[1.05rem] transition-colors"
+      aria-label="Frederik Anspach, zur Startseite"
+    >
+      Frederik Anspach
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Hauptnavigation">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-ink-soft hover:text-ink text-[0.9375rem] font-medium transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      {
+        externalLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener"
+            class="text-ink-soft hover:text-ink text-[0.9375rem] font-medium transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/#contact" class="u-btn u-btn-primary !px-5 !py-2.5">Kontakt</a>
+    </nav>
+
+    <button
+      type="button"
+      class="u-eyebrow !text-ink md:hidden"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      Menü
+    </button>
+  </div>
+
+  <nav
+    id="mobile-nav"
+    class="border-line bg-paper hidden border-t md:!hidden"
+    aria-label="Mobile Navigation"
+    data-nav-menu
+  >
+    <div class="flex flex-col gap-1 px-5 py-4">
+      {
+        [...navLinks, ...externalLinks].map((link) => (
+          <a
+            href={link.href}
+            class="text-ink py-2.5 text-base font-medium"
+            target={link.href.startsWith("http") ? "_blank" : undefined}
+            rel={link.href.startsWith("http") ? "noopener" : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="/#contact" class="u-btn u-btn-primary mt-3 justify-center">Kontakt</a>
+    </div>
+  </nav>
+</header>

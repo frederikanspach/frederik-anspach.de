@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Design Tokens
+   Palette: kühles Papierweiß, Tinte mit Petrol-Unterton,
+   Petrol als einziger Akzent (Markenanker MyTid)
+   --------------------------------------------------------------- */
+@theme {
+  --color-paper: #fafaf8;
+  --color-surface: #f1f2ee;
+  --color-ink: #16211f;
+  --color-ink-soft: #3d4a47;
+  --color-muted: #5c6966;
+  --color-line: rgba(22, 33, 31, 0.14);
+  --color-line-strong: rgba(22, 33, 31, 0.32);
+  --color-accent: #1e5e6e;
+  --color-accent-deep: #174b58;
+  --color-accent-wash: #e4ecec;
+  --color-error: #a4321f;
+  --color-success: #1e6e46;
+
+  --font-sans: "Archivo Variable", "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --spacing-section: clamp(5rem, 12vw, 9rem);
+}
+
+/* ---------------------------------------------------------------
+   Basis
+   --------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Typografie-Rollen
+   --------------------------------------------------------------- */
+@utility u-display {
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 118;
+  font-weight: 620;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+@utility u-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@utility u-mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  border: 1px solid var(--color-line);
+  padding: 0.2rem 0.55rem;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------- */
+@utility u-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 520;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+@utility u-btn-primary {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+
+  &:hover {
+    background-color: var(--color-accent-deep);
+  }
+}
+
+@utility u-btn-outline {
+  border-color: var(--color-line-strong);
+  color: var(--color-ink);
+
+  &:hover {
+    border-color: var(--color-ink);
+    background-color: var(--color-surface);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Scroll-Reveal
+   --------------------------------------------------------------- */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Rechtstexte (Impressum, Datenschutz)
+   --------------------------------------------------------------- */
+@layer components {
+  .legal-prose h1 {
+    font-variation-settings: "wdth" 118;
+    font-weight: 620;
+    letter-spacing: -0.022em;
+    line-height: 1.08;
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .legal-prose h2 {
+    font-variation-settings: "wdth" 112;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .legal-prose h3 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .legal-prose h4 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .legal-prose p {
+    color: var(--color-ink-soft);
+    margin-bottom: 1rem;
+    max-width: 70ch;
+  }
+
+  .legal-prose ul {
+    list-style: disc;
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--color-ink-soft);
+    max-width: 70ch;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .legal-prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .legal-prose a:hover {
+    color: var(--color-accent-deep);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Formular
+   --------------------------------------------------------------- */
+@layer components {
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .form-field label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .form-field input[type="text"],
+  .form-field input[type="email"],
+  .form-field textarea {
+    background-color: transparent;
+    border: 1px solid var(--color-line-strong);
+    padding: 0.75rem 0.9rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+    transition: border-color 0.2s ease;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--color-muted);
+    opacity: 0.7;
+  }
+
+  /* Honeypot: für Menschen unsichtbar, für Bots ein normales Feld */
+  .pot-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Toast
+   --------------------------------------------------------------- */
+@layer components {
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    translate: -50% 1rem;
+    z-index: 100;
+    max-width: min(92vw, 26rem);
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    font-size: 0.9375rem;
+    padding: 0.85rem 1.4rem;
+    opacity: 0;
+    transition:
+      opacity 0.35s ease,
+      translate 0.35s ease;
+  }
+
+  .toast.is-visible {
+    opacity: 1;
+    translate: -50% 0;
+  }
+
+  .toast--error {
+    background-color: var(--color-error);
+  }
+
+  .toast--success {
+    background-color: var(--color-success);
+  }
+}

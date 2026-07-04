@@ -1,0 +1,32 @@
+---
+const principles = [
+  {
+    title: "Lokal statt Cloud",
+    text: "Alle Daten bleiben auf den eigenen Geräten. Keine Datenweitergabe, keine fremden Server, keine Abhängigkeit.",
+  },
+  {
+    title: "DSGVO by Design",
+    text: "Datenschutz ist Teil der Architektur, nicht nachgerüstet. Compliance ab der ersten Minute.",
+  },
+  {
+    title: "Kein Abo-Zwang",
+    text: "Kostenlos startbar, transparent kalkulierbar. Software, die man besitzt statt mietet.",
+  },
+];
+---
+
+<section class="border-line border-b" aria-label="Prinzipien">
+  <div class="border-line mx-auto grid max-w-6xl md:grid-cols-3 md:divide-x md:divide-(--color-line)">
+    {
+      principles.map((principle, index) => (
+        <div
+          class="reveal border-line border-b px-5 py-9 last:border-b-0 md:border-b-0 md:px-8 md:py-12"
+          style={`--reveal-delay: ${index * 0.08}s`}
+        >
+          <h2 class="u-display text-lg">{principle.title}</h2>
+          <p class="text-muted mt-3 text-[0.9375rem] leading-relaxed">{principle.text}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

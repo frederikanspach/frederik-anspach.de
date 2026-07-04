@@ -1,0 +1,93 @@
+---
+const secondaryProducts = [
+  {
+    badge: "Enterprise",
+    name: "OTid",
+    description:
+      "Team-Analytics für Teamleiter und HR. Aggregierte Auswertungen, zentrale Übersicht, keine Einzelüberwachung. Compliance ist eingebaut, nicht nachgerüstet. Für Unternehmen, die mehr wollen als eine digitale Stempelkarte.",
+    tags: ["HR", "Analytics", "Teams", "Compliance"],
+    cta: { label: "Anfragen", href: "mailto:kontakt@frederik-anspach.de", external: false },
+  },
+  {
+    badge: "API",
+    name: "API.MyTid",
+    description:
+      "REST-API für IT-Abteilungen und Systemintegratoren. Versioniert, dokumentiert, sicherheitsgeprüft. Rechtssichere Zeiterfassung direkt in bestehende IT-Infrastruktur integrieren, ohne Medienbruch.",
+    tags: ["REST", "Enterprise", "API", "Dokumentiert"],
+    cta: { label: "Dokumentation", href: "https://mytid.de/#ecosystem", external: true },
+  },
+];
+---
+
+<section id="products" class="border-line border-b">
+  <div class="mx-auto max-w-6xl px-5 py-(--spacing-section) md:px-8">
+    <div class="reveal max-w-2xl">
+      <p class="u-eyebrow mb-5">Produkte</p>
+      <h2 class="u-display text-4xl md:text-5xl">Das MyTid Ökosystem</h2>
+      <p class="text-ink-soft mt-5 text-lg text-pretty">
+        Drei Werkzeuge, ein Fokus: rechtssichere Zeiterfassung, die in der Praxis wirklich
+        funktioniert.
+      </p>
+    </div>
+
+    <!-- Hauptprodukt -->
+    <article class="border-line-strong reveal mt-14 grid border md:grid-cols-2">
+      <div class="border-line bg-surface flex flex-col justify-between border-b p-7 md:border-r md:border-b-0 md:p-10">
+        <span class="u-eyebrow !text-accent">Hauptprodukt</span>
+        <h3 class="u-display mt-16 text-5xl md:mt-24 md:text-6xl">MyTid</h3>
+      </div>
+      <div class="flex flex-col p-7 md:p-10">
+        <p class="text-ink-soft text-pretty">
+          Seit dem BAG-Urteil 2022 ist Zeiterfassung in Deutschland Pflicht, für alle Unternehmen.
+          MyTid setzt das um: läuft lokal auf eigenen Geräten, keine Cloud-Pflicht, keine
+          Datenweitergabe, kein Abo-Zwang. DSGVO by Design, kostenlos startbar.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            ["PWA", "Lokal", "DSGVO-konform", "BAG-konform", "Kostenlos startbar"].map((tag) => (
+              <span class="u-mono-tag">{tag}</span>
+            ))
+          }
+        </div>
+        <div class="mt-auto pt-8">
+          <a class="u-btn u-btn-primary" href="https://mytid.de" target="_blank" rel="noopener">
+            Zur Produktseite
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- OTid & API.MyTid -->
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {
+        secondaryProducts.map((product, index) => (
+          <article
+            class="border-line hover:border-line-strong reveal flex flex-col border p-7 transition-colors md:p-10"
+            style={`--reveal-delay: ${index * 0.08}s`}
+          >
+            <span class="u-eyebrow">{product.badge}</span>
+            <h3 class="u-display mt-4 text-3xl">{product.name}</h3>
+            <p class="text-ink-soft mt-4 text-[0.9575rem] text-pretty">{product.description}</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {product.tags.map((tag) => (
+                <span class="u-mono-tag">{tag}</span>
+              ))}
+            </div>
+            <div class="mt-auto pt-8">
+              <a
+                class="u-btn u-btn-outline"
+                href={product.cta.href}
+                target={product.cta.external ? "_blank" : undefined}
+                rel={product.cta.external ? "noopener" : undefined}
+              >
+                {product.cta.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
