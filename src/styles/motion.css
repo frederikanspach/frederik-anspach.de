@@ -92,14 +92,6 @@
     transform: translateX(0.4rem);
   }
 
-  /* Foto bekommt beim Hover dezent Farbe */
-  .hero-photo img {
-    transition: filter 1.2s ease;
-  }
-
-  .hero-photo:hover img {
-    filter: grayscale(0.15) contrast(1.02);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
