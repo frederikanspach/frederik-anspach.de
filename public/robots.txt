@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://frederik-anspach.de/sitemap.xml

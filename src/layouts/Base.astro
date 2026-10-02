@@ -15,6 +15,7 @@ interface Props {
 const { title, description, path = "/", withStructuredData = false } = Astro.props;
 const canonical = new URL(path, Astro.site).href;
 
+// Strukturierte Daten bewusst knapp: Person und Organisation, keine Produktbehauptungen
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -23,34 +24,31 @@ const structuredData = {
       "@id": "https://frederik-anspach.de/#person",
       name: "Frederik Anspach",
       url: "https://frederik-anspach.de",
-      jobTitle: "Gründer & Entwickler",
+      image: "https://frederik-anspach.de/img/frederik-01.webp",
+      worksFor: { "@id": "https://frederik-anspach.de/#organization" },
       sameAs: [
-        "https://github.com/frederikanspach",
         "https://www.linkedin.com/in/frederik-anspach/",
+        "https://github.com/frederikanspach",
       ],
-      worksFor: {
-        "@type": "Organization",
-        name: "Frederik Anspach IT & Softwaresysteme",
-        url: "https://frederik-anspach.de",
-      },
     },
     {
-      "@type": "SoftwareApplication",
-      "@id": "https://mytid.de/#app",
-      name: "MyTid",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web, Windows, macOS, Linux",
-      url: "https://mytid.de",
-      description:
-        "Rechtssichere, DSGVO-konforme Zeiterfassung für Unternehmen nach BAG-Urteil 2022. Lokal, ohne Cloud-Zwang, kostenlos startbar.",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "EUR",
+      "@type": "Organization",
+      "@id": "https://frederik-anspach.de/#organization",
+      name: "Frederik Anspach IT & Softwaresysteme",
+      url: "https://frederik-anspach.de",
+      email: "kontakt@frederik-anspach.de",
+      founder: { "@id": "https://frederik-anspach.de/#person" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Vordorf",
+        addressRegion: "Niedersachsen",
+        addressCountry: "DE",
       },
-      author: {
-        "@id": "https://frederik-anspach.de/#person",
-      },
+      areaServed: "DE",
+      sameAs: [
+        "https://www.linkedin.com/in/frederik-anspach/",
+        "https://github.com/frederikanspach",
+      ],
     },
   ],
 };
@@ -76,6 +74,10 @@ const structuredData = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Frederik Anspach IT &amp; Softwaresysteme" />
+    <meta property="og:image" content={new URL("/img/frederik-01.webp", Astro.site).href} />
+    <meta property="og:image:alt" content="Frederik Anspach" />
+    <meta name="twitter:card" content="summary" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
