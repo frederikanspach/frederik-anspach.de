@@ -1,82 +1,75 @@
 ---
 const navLinks = [
-  { label: "Produkte", href: "/#products" },
-  { label: "Über mich", href: "/#about" },
-];
-
-const externalLinks = [
-  { label: "GitHub", href: "https://github.com/frederikanspach" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/frederik-anspach/" },
+  { label: "Produkte", href: "/#produkte" },
+  { label: "Über mich", href: "/#ueber-mich" },
+  { label: "Kontakt", href: "/#kontakt" },
 ];
 ---
 
-<header class="border-line bg-paper/92 fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
-    <a
-      href="/"
-      class="u-display hover:text-accent text-[1.05rem] transition-colors"
-      aria-label="Frederik Anspach, zur Startseite"
-    >
+<header class="site-header" data-header>
+  <div class="u-container site-header-inner">
+    <a href="/" class="site-logo u-serif" aria-label="Frederik Anspach, zur Startseite">
       Frederik Anspach
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Hauptnavigation">
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-ink-soft hover:text-ink text-[0.9375rem] font-medium transition-colors"
-          >
-            {link.label}
-          </a>
-        ))
-      }
-      {
-        externalLinks.map((link) => (
-          <a
-            href={link.href}
-            target="_blank"
-            rel="noopener"
-            class="text-ink-soft hover:text-ink text-[0.9375rem] font-medium transition-colors"
-          >
-            {link.label}
-          </a>
-        ))
-      }
-      <a href="/#contact" class="u-btn u-btn-primary !px-5 !py-2.5">Kontakt</a>
-    </nav>
+    <div class="site-header-actions">
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        {
+          navLinks.map((link) => (
+            <a href={link.href} class="u-link">
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
 
-    <button
-      type="button"
-      class="u-eyebrow !text-ink md:hidden"
-      data-nav-toggle
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-    >
-      Menü
-    </button>
+      <button
+        type="button"
+        class="icon-btn"
+        data-theme-toggle
+        aria-label="Farbschema wechseln"
+        title="Farbschema wechseln"
+      >
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+          <path
+            d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.55 1.55M17.15 17.15l1.55 1.55M5.3 18.7l1.55-1.55M17.15 6.85l1.55-1.55"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"></path>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path
+            d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="menu-btn"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        Menü
+      </button>
+    </div>
   </div>
 
-  <nav
-    id="mobile-nav"
-    class="border-line bg-paper hidden border-t md:!hidden"
-    aria-label="Mobile Navigation"
-    data-nav-menu
-  >
-    <div class="flex flex-col gap-1 px-5 py-4">
+  <nav id="mobile-nav" class="mobile-nav hidden" aria-label="Mobile Navigation" data-nav-menu>
+    <div class="u-container flex flex-col py-3">
       {
-        [...navLinks, ...externalLinks].map((link) => (
-          <a
-            href={link.href}
-            class="text-ink py-2.5 text-base font-medium"
-            target={link.href.startsWith("http") ? "_blank" : undefined}
-            rel={link.href.startsWith("http") ? "noopener" : undefined}
-          >
+        navLinks.map((link) => (
+          <a href={link.href} class="mobile-nav-link">
             {link.label}
           </a>
         ))
       }
-      <a href="/#contact" class="u-btn u-btn-primary mt-3 justify-center">Kontakt</a>
     </div>
   </nav>
 </header>
