@@ -91,16 +91,23 @@
 /* ---------------------------------------------------------------
    Basis
    --------------------------------------------------------------- */
+/* Grundfarben bewusst ausserhalb von @layer: ungeschichtete Regeln schlagen jede
+   Ebene. So kann keine fremde, ungeschichtete Regel (eingebettete Vorschau,
+   Browser-Erweiterung) den Hintergrund hell lassen, waehrend die Schrift schon
+   die Dunkel-Farbe hat. */
+html,
+body {
+  background-color: var(--c-bg);
+  color: var(--c-ink);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
-    background-color: var(--c-bg);
   }
 
   body {
-    background-color: var(--c-bg);
-    color: var(--c-ink);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.65;
