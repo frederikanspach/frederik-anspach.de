@@ -1,0 +1,202 @@
+/* ---------------------------------------------------------------
+   Bewegung und Übergänge
+   Alles Animierte steht unter prefers-reduced-motion: no-preference.
+   Versteckte Ausgangszustände greifen nur mit der Klasse .js auf
+   <html> (gesetzt von public/theme-init.js), ohne JavaScript ist
+   der Inhalt vollständig sichtbar.
+   --------------------------------------------------------------- */
+
+@layer components {
+  /* Links mit Unterstreichung, die von links einläuft */
+  .u-link {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(var(--c-accent), var(--c-accent));
+    background-repeat: no-repeat;
+    background-position: 0 calc(50% + 0.75em);
+    background-size: 0% 1px;
+    transition:
+      background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+  }
+
+  .u-link:hover,
+  .u-link:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Mail-Adresse: dauerhaft dezent unterstrichen, Akzentlinie beim Hover */
+  .contact-mail {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    background-image:
+      linear-gradient(var(--c-accent), var(--c-accent)),
+      linear-gradient(var(--c-line), var(--c-line));
+    background-position:
+      0 calc(50% + 0.75em),
+      0 calc(50% + 0.75em);
+    background-size:
+      0% 1px,
+      100% 1px;
+  }
+
+  .contact-mail:hover,
+  .contact-mail:focus-visible {
+    background-size:
+      100% 1px,
+      100% 1px;
+  }
+
+  /* Header: kompakt mit Unschärfe, sobald gescrollt wurde */
+  .site-header {
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      backdrop-filter 0.3s ease;
+  }
+
+  .site-header-inner {
+    transition: padding 0.3s ease;
+  }
+
+  .site-header.is-scrolled,
+  .site-header:has([data-nav-menu]:not(.hidden)),
+  html:not(.js) .site-header {
+    background-color: var(--c-header-bg);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom-color: var(--c-line);
+  }
+
+  .site-header.is-scrolled .site-header-inner {
+    padding-block: 0.5rem;
+  }
+
+  /* Produktzeilen: Hervorhebung und gleitender Pfeil */
+  .product-row {
+    transition: background-color 0.3s ease;
+  }
+
+  .product-row:hover,
+  .product-row:focus-visible {
+    background-color: color-mix(in srgb, var(--c-accent) 7%, transparent);
+  }
+
+  .product-arrow {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .product-row:hover .product-arrow,
+  .product-row:focus-visible .product-arrow {
+    transform: translateX(0.4rem);
+  }
+
+  /* Foto bekommt beim Hover dezent Farbe */
+  .hero-photo img {
+    transition: filter 1.2s ease;
+  }
+
+  .hero-photo:hover img {
+    filter: grayscale(0.15) contrast(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Weicher Farbübergang nur während des Theme-Wechsels */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease,
+      border-color 0.4s ease,
+      fill 0.4s ease,
+      stroke 0.4s ease !important;
+  }
+
+  /* Scroll-Reveal */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero: Zeilen nacheinander, Foto blendet weich ein */
+  .hero-line {
+    animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--line, 0) * 0.11s + 0.1s);
+  }
+
+  .hero-photo img {
+    animation: photo-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.6em);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes photo-in {
+    from {
+      opacity: 0;
+      transform: scale(1.34);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.22);
+    }
+  }
+
+  /* Kette: Einträge erscheinen nacheinander, Verbindungen zeichnen sich */
+  .js .chain .chain-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 0.45s + 0.15s);
+  }
+
+  .js .chain .chain-link {
+    transform: scaleY(0);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: calc(var(--i, 0) * 0.45s - 0.15s);
+  }
+
+  .js .chain.is-visible .chain-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .chain.is-visible .chain-link {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-link,
+  .contact-mail,
+  .site-header,
+  .site-header-inner,
+  .product-row,
+  .product-arrow,
+  .hero-photo img {
+    transition: none;
+  }
+}
