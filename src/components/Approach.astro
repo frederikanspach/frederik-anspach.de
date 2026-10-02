@@ -1,0 +1,54 @@
+---
+// Abschnitt "Worum es geht" mit schematischer Kette aus drei Einträgen
+const chain = [
+  { meta: "#1041 · 07:58", label: "Arbeitsbeginn", prev: "vorher a3f9…e21c", marked: false },
+  { meta: "#1042 · 12:01", label: "Pause 30 min", prev: "vorher 7b20…04d8", marked: false },
+  {
+    meta: "#1043 · 16:34",
+    label: "Korrektur: Ende 16:30 → 16:45",
+    prev: "protokolliert, vorher c91e…5a77",
+    marked: true,
+  },
+];
+---
+
+<section id="worum-es-geht" class="u-section u-section-surface">
+  <div class="u-container approach-grid">
+    <div class="reveal">
+      <h2 class="u-serif u-h2">Worum es geht</h2>
+      <div class="u-body mt-8 flex flex-col gap-5">
+        <p>
+          Bei Arbeitszeiten gibt es oft Streit darüber, was wirklich gearbeitet wurde und wer später
+          etwas geändert hat. Meine Software hängt jeden Eintrag an den vorherigen an. Wird ein
+          Eintrag geändert oder gelöscht, ist das nachvollziehbar.
+        </p>
+        <p>
+          Die Daten werden verschlüsselt, bevor sie das Gerät verlassen. Gespeichert wird auf Servern
+          in Deutschland.
+        </p>
+        <p>
+          Zeiterfassung ist der erste Einsatzzweck. Das gleiche Verfahren eignet sich überall, wo
+          jemand anderes einen Beleg prüfen können soll.
+        </p>
+      </div>
+    </div>
+
+    <figure class="chain reveal" data-chain>
+      <ol class="chain-list">
+        {
+          chain.map((entry, index) => (
+            <li class="chain-item" style={`--i: ${index}`}>
+              {index > 0 && <span class="chain-link" aria-hidden="true" />}
+              <div class:list={["chain-card", { "is-marked": entry.marked }]}>
+                <span class="chain-meta">{entry.meta}</span>
+                <span class="chain-label u-serif">{entry.label}</span>
+                <span class="chain-prev">{entry.prev}</span>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <figcaption class="chain-caption">Schematische Darstellung</figcaption>
+    </figure>
+  </div>
+</section>

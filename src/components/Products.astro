@@ -1,93 +1,57 @@
 ---
-const secondaryProducts = [
+const products = [
   {
-    badge: "Enterprise",
-    name: "OTid",
-    description:
-      "Team-Analytics für Teamleiter und HR. Aggregierte Auswertungen, zentrale Übersicht, keine Einzelüberwachung. Compliance ist eingebaut, nicht nachgerüstet. Für Unternehmen, die mehr wollen als eine digitale Stempelkarte.",
-    tags: ["HR", "Analytics", "Teams", "Compliance"],
-    cta: { label: "Anfragen", href: "mailto:kontakt@frederik-anspach.de", external: false },
+    name: "MyTid",
+    status: "Öffentliche Beta",
+    active: true,
+    text: "Zeiterfassung für Angestellte, Selbstständige und Freiberufler. Im Browser und als App, auch offline.",
+    href: "https://mytid.de",
+    linkLabel: "mytid.de",
   },
   {
-    badge: "API",
+    name: "OTid",
+    status: "In Entwicklung",
+    active: false,
+    text: "Für Unternehmen: fasst die Zeiten des Teams zusammen und bereitet sie für die Lohnabrechnung auf. Bisher nur als Demo mit Beispieldaten.",
+    href: "https://mytid.de/otid",
+    linkLabel: "mytid.de/otid",
+  },
+  {
     name: "API.MyTid",
-    description:
-      "REST-API für IT-Abteilungen und Systemintegratoren. Versioniert, dokumentiert, sicherheitsgeprüft. Rechtssichere Zeiterfassung direkt in bestehende IT-Infrastruktur integrieren, ohne Medienbruch.",
-    tags: ["REST", "Enterprise", "API", "Dokumentiert"],
-    cta: { label: "Dokumentation", href: "https://mytid.de/#ecosystem", external: true },
+    status: "Geplant",
+    active: false,
+    text: "Eine Schnittstelle, um Zeitdaten an andere Systeme zu übergeben. Kommt nach OTid.",
+    href: "https://mytid.de/api",
+    linkLabel: "mytid.de/api",
   },
 ];
 ---
 
-<section id="products" class="border-line border-b">
-  <div class="mx-auto max-w-6xl px-5 py-(--spacing-section) md:px-8">
-    <div class="reveal max-w-2xl">
-      <p class="u-eyebrow mb-5">Produkte</p>
-      <h2 class="u-display text-4xl md:text-5xl">Das MyTid Ökosystem</h2>
-      <p class="text-ink-soft mt-5 text-lg text-pretty">
-        Drei Werkzeuge, ein Fokus: rechtssichere Zeiterfassung, die in der Praxis wirklich
-        funktioniert.
-      </p>
-    </div>
-
-    <!-- Hauptprodukt -->
-    <article class="border-line-strong reveal mt-14 grid border md:grid-cols-2">
-      <div class="border-line bg-surface flex flex-col justify-between border-b p-7 md:border-r md:border-b-0 md:p-10">
-        <span class="u-eyebrow !text-accent">Hauptprodukt</span>
-        <h3 class="u-display mt-16 text-5xl md:mt-24 md:text-6xl">MyTid</h3>
-      </div>
-      <div class="flex flex-col p-7 md:p-10">
-        <p class="text-ink-soft text-pretty">
-          Seit dem BAG-Urteil 2022 ist Zeiterfassung in Deutschland Pflicht, für alle Unternehmen.
-          MyTid setzt das um: läuft lokal auf eigenen Geräten, keine Cloud-Pflicht, keine
-          Datenweitergabe, kein Abo-Zwang. DSGVO by Design, kostenlos startbar.
-        </p>
-        <div class="mt-6 flex flex-wrap gap-2">
-          {
-            ["PWA", "Lokal", "DSGVO-konform", "BAG-konform", "Kostenlos startbar"].map((tag) => (
-              <span class="u-mono-tag">{tag}</span>
-            ))
-          }
-        </div>
-        <div class="mt-auto pt-8">
-          <a class="u-btn u-btn-primary" href="https://mytid.de" target="_blank" rel="noopener">
-            Zur Produktseite
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <!-- OTid & API.MyTid -->
-    <div class="mt-6 grid gap-6 md:grid-cols-2">
+<section id="produkte" class="u-section">
+  <div class="u-container">
+    <h2 class="u-serif u-h2 reveal">Produkte</h2>
+    <ul class="products">
       {
-        secondaryProducts.map((product, index) => (
-          <article
-            class="border-line hover:border-line-strong reveal flex flex-col border p-7 transition-colors md:p-10"
-            style={`--reveal-delay: ${index * 0.08}s`}
-          >
-            <span class="u-eyebrow">{product.badge}</span>
-            <h3 class="u-display mt-4 text-3xl">{product.name}</h3>
-            <p class="text-ink-soft mt-4 text-[0.9575rem] text-pretty">{product.description}</p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              {product.tags.map((tag) => (
-                <span class="u-mono-tag">{tag}</span>
-              ))}
-            </div>
-            <div class="mt-auto pt-8">
-              <a
-                class="u-btn u-btn-outline"
-                href={product.cta.href}
-                target={product.cta.external ? "_blank" : undefined}
-                rel={product.cta.external ? "noopener" : undefined}
-              >
-                {product.cta.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
+        products.map((product, index) => (
+          <li class="reveal" style={`--reveal-delay: ${index * 0.1}s`}>
+            <a class="product-row" href={product.href}>
+              <span class="product-name u-serif">{product.name}</span>
+              <span class:list={["product-status", { "is-active": product.active }]}>
+                {product.status}
+              </span>
+              <span class="product-text">
+                {product.text}
+                <span class="product-link">
+                  {product.linkLabel}
+                  <span class="product-arrow" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </span>
+            </a>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
 </section>

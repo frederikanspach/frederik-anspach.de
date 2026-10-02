@@ -1,60 +1,54 @@
 ---
 ---
 
-<section id="contact" class="bg-surface">
-  <div class="mx-auto max-w-6xl px-5 py-(--spacing-section) md:px-8">
-    <div class="grid gap-12 md:grid-cols-[2fr_3fr] md:gap-16">
-      <div class="reveal">
-        <p class="u-eyebrow mb-5">Kontakt</p>
-        <h2 class="u-display text-4xl md:text-5xl">Einfach melden.</h2>
-        <p class="text-ink-soft mt-5 text-pretty">
-          Fragen zu MyTid, OTid oder der API? Direkt anschreiben. Ich antworte persönlich.
-        </p>
-        <p class="mt-8">
-          <span class="u-eyebrow block">Direkt per Mail</span>
-          <a
-            class="text-accent hover:text-accent-deep mt-2 inline-block font-mono text-[0.9375rem] underline underline-offset-4 transition-colors"
-            href="mailto:kontakt@frederik-anspach.de"
-          >
-            kontakt@frederik-anspach.de
-          </a>
-        </p>
+<section id="kontakt" class="u-section">
+  <div class="u-container split-grid">
+    <div class="reveal">
+      <h2 class="u-serif u-h2">Kontakt</h2>
+      <p class="u-body mt-6 max-w-md">
+        Fragen zu MyTid, Interesse an OTid für Ihr Unternehmen oder eine Idee für eine
+        Zusammenarbeit? Schreiben Sie mir, ich antworte selbst.
+      </p>
+      <p class="mt-8">
+        <a class="u-link contact-mail u-serif" href="mailto:kontakt@frederik-anspach.de">
+          kontakt@frederik-anspach.de
+        </a>
+      </p>
+    </div>
+
+    <form class="contact-form reveal" data-contact-form novalidate style="--reveal-delay: 0.1s">
+      <div class="pot-field" aria-hidden="true">
+        <label for="pot">Bitte leer lassen</label>
+        <input type="text" id="pot" name="pot" tabindex="-1" autocomplete="off" />
       </div>
 
-      <form class="reveal flex flex-col gap-6" data-contact-form novalidate style="--reveal-delay: 0.1s">
-        <div class="pot-field" aria-hidden="true">
-          <label for="pot">Bitte leer lassen</label>
-          <input type="text" id="pot" name="pot" tabindex="-1" autocomplete="off" />
-        </div>
-
-        <div class="grid gap-6 sm:grid-cols-2">
-          <div class="form-field">
-            <label for="form-name">Name</label>
-            <input type="text" id="form-name" name="name" autocomplete="name" required />
-          </div>
-          <div class="form-field">
-            <label for="form-email">E-Mail</label>
-            <input type="email" id="form-email" name="email" autocomplete="email" required />
-          </div>
-        </div>
-
+      <div class="grid gap-5 sm:grid-cols-2">
         <div class="form-field">
-          <label for="form-message">Nachricht</label>
-          <textarea id="form-message" name="message" rows="6" required></textarea>
+          <label for="form-name">Name</label>
+          <input type="text" id="form-name" name="name" autocomplete="name" required />
         </div>
+        <div class="form-field">
+          <label for="form-email">E-Mail</label>
+          <input type="email" id="form-email" name="email" autocomplete="email" required />
+        </div>
+      </div>
 
-        <div class="flex items-start gap-3">
-          <input type="checkbox" id="form-privacy" name="privacy" required class="mt-1 accent-(--color-accent)" />
-          <label for="form-privacy" class="text-ink-soft text-[0.9375rem]">
-            Ich akzeptiere die{" "}
-            <a href="/datenschutz.html" class="text-accent underline underline-offset-2" target="_blank">Datenschutzerklärung</a>.
-          </label>
-        </div>
+      <div class="form-field">
+        <label for="form-message">Nachricht</label>
+        <textarea id="form-message" name="message" rows="6" required></textarea>
+      </div>
 
-        <div>
-          <button type="submit" class="u-btn u-btn-primary">Nachricht senden</button>
-        </div>
-      </form>
-    </div>
+      <div class="form-check">
+        <input type="checkbox" id="form-privacy" name="privacy" required />
+        <label for="form-privacy">
+          Ich akzeptiere die{" "}
+          <a href="/datenschutz.html" class="u-link-inline" target="_blank">Datenschutzerklärung</a>.
+        </label>
+      </div>
+
+      <div>
+        <button type="submit" class="u-btn u-btn-primary">Nachricht senden</button>
+      </div>
+    </form>
   </div>
 </section>

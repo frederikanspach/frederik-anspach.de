@@ -1,32 +1,35 @@
 ---
 const principles = [
   {
-    title: "Lokal statt Cloud",
-    text: "Alle Daten bleiben auf den eigenen Geräten. Keine Datenweitergabe, keine fremden Server, keine Abhängigkeit.",
+    title: "Änderungen bleiben sichtbar",
+    text: "Jeder Eintrag ist mit dem vorherigen verknüpft. Nachträgliche Korrekturen sind möglich, aber sie werden protokolliert.",
   },
   {
-    title: "DSGVO by Design",
-    text: "Datenschutz ist Teil der Architektur, nicht nachgerüstet. Compliance ab der ersten Minute.",
+    title: "Nur die nötigen Daten",
+    text: "Die Grundversion von MyTid braucht kein Konto und speichert nur auf dem eigenen Gerät. Wer Sicherung und Abgleich nutzt, überträgt nur verschlüsselte Daten.",
   },
   {
-    title: "Kein Abo-Zwang",
-    text: "Kostenlos startbar, transparent kalkulierbar. Software, die man besitzt statt mietet.",
+    title: "Keine Werbung",
+    text: "Die Grundversion von MyTid ist kostenlos und bleibt werbefrei. Kosten entstehen nur für Zusatzleistungen wie Sicherung, Abgleich zwischen Geräten und die Firmenversion.",
   },
 ];
 ---
 
-<section class="border-line border-b" aria-label="Prinzipien">
-  <div class="border-line mx-auto grid max-w-6xl md:grid-cols-3 md:divide-x md:divide-(--color-line)">
-    {
-      principles.map((principle, index) => (
-        <div
-          class="reveal border-line border-b px-5 py-9 last:border-b-0 md:border-b-0 md:px-8 md:py-12"
-          style={`--reveal-delay: ${index * 0.08}s`}
-        >
-          <h2 class="u-display text-lg">{principle.title}</h2>
-          <p class="text-muted mt-3 text-[0.9375rem] leading-relaxed">{principle.text}</p>
-        </div>
-      ))
-    }
+<section id="arbeitsweise" class="u-section">
+  <div class="u-container">
+    <h2 class="u-serif u-h2 reveal">Wie ich arbeite</h2>
+    <ol class="principles">
+      {
+        principles.map((principle, index) => (
+          <li class="principle reveal" style={`--reveal-delay: ${index * 0.1}s`}>
+            <span class="principle-num u-serif" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 class="principle-title">{principle.title}</h3>
+            <p class="u-body">{principle.text}</p>
+          </li>
+        ))
+      }
+    </ol>
   </div>
 </section>
